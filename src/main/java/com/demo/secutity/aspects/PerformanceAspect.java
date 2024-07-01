@@ -1,4 +1,4 @@
-package com.demo.secutity.Aspects;
+package com.demo.secutity.aspects;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
