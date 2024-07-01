@@ -8,6 +8,7 @@ import com.demo.secutity.entity.Role;
 import com.demo.secutity.entity.User;
 import com.demo.secutity.repository.RoleRepository;
 import com.demo.secutity.repository.UserRepository;
+import com.demo.secutity.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,7 +20,7 @@ import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
-public class AuthService {
+public class AuthServiceImpl implements AuthService {
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
     private final JwtService jwtService;
@@ -52,7 +53,7 @@ public class AuthService {
                 .build();
 
         Set<Role> roles = new HashSet<>();
-        Role userRole = roleRepository.findByName("User")
+        Role userRole = roleRepository.findByName("USER")
                 .orElseThrow(() -> new RuntimeException("Error: Role USER is not found."));
         roles.add(userRole);
         user.setRoles(roles);
